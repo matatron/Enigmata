@@ -1,0 +1,14 @@
+# Turn on URL rewriting
+RewriteEngine On
+
+# Installation directory
+RewriteBase /admin/rsvp/
+
+# Protect hidden files from being viewed
+<Files .*>
+    Order Deny,Allow
+    Deny From All
+</Files>
+
+# Rewrite all other URLs to index.php/URL
+RewriteRule .* $0 [PT]

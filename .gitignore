@@ -1,2 +1,4 @@
-application/cache/*
-application/logs/*
+htdocs/bower_components/*
+htdocs/admin/application/cache/*
+htdocs/admin/application/logs/*
+src/node_modules/*

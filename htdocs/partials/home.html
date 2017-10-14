@@ -1,0 +1,218 @@
+<html>
+    <head>
+        <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+    </head>
+    <body>
+        <div ng-controller="HomeController as homectrl">
+            <div id="index-banner" class="parallax-container valign-wrapper">
+                <div class="section no-pad-bot">
+                    <div class="container">
+                        <div class="row center">
+                            <h5 class="header col s12 black-text">El juego ha iniciado!</h5>
+                        </div>
+                        <div class="center red-text LCD bigcounter">{{homectrl.timeleft |
+                            date:'mm:ss'}}</div>
+                        <div class="row center">
+                            <h5 class="header col s12 black-text">El tiempo corre y no hay
+                                marcha atrás<br>
+                                Debes completar la misión</h5>
+                        </div>
+                        <div class="row center">
+                            <a href="#que" class="btn-large waves-effect grey darken-2 waves-light" analytics-on="click" analytics-event="Home">¿De
+                                qué se trata?</a>
+                            <a href="#cuartos" class="btn-large waves-effect waves-light" analytics-on="click" analytics-event="Button 1">¡Acepto
+                                la misión!</a> </div>
+                    </div>
+                </div>
+                <div class="parallax"><img src="/img/background1.jpg" alt="Unsplashed background img 1"></div>
+                <a id="que"></a> </div>
+            <div class="container">
+                <div class="section">
+                    <div class="row">
+                        <div class="col s12 center">
+                            <span id="droppable" class="em4"><i class="fa black-text fa-lock"></i></span>
+                            <h4>¿Qué es <span class="enigfont">Enigmata</span>?</h4>
+                            <div class="left-align">
+                                Enigmata es diversión, ingenio e inmersión.<br/><br/>
+                                Enigmata es un Escape Room ubicado en Heredia, Costa Rica, que pone a prueba todas tus habilidades de observación, deducción y creatividad para vivir una historia que te transportará a otro mundo.Es un lugar donde ganar o perder dependerá de todo tu equipo y tendrás que cooperar para vencer el desafío. Pistas, misterios e incógnitas por resolver se esconden en un detallado escenario.
+                                <br>
+                                <br>
+                                Solo dispondrás de sesenta minutos para lograr descifrar los acertijos que aguardan tras la puerta. <br>
+                                Sesenta minutos para triunfar o fallar. Dos salas distintas. Dos temáticas opuestas. ¿Cuál elegirás? Y lo más importante, ¿lo lograrás?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 center">
+                            <h4>¿Cómo se juega?</h4>
+                            <p class="left-align">Es muy sencillo:</p>
+                            <ol class="left-align">
+                                <li>Elige en qué sala deseas jugar</li>
+                                <li>Haz la reservación del día y la hora para tu grupo</li>
+                                <li>Preséntate 10 minutos antes con tu grupo en nuestro local ubicado en Heredia, calle 9, entre avenidas 4 y 6, frente a Mc Donald's</li>
+                                <li>El costo por persona es de {{global.price | currency:undefined:0}} (doce mil colones)</li>
+                                <li>Nuestros guías les darán la bienvenida, explicarán las reglas y los llevarán a su desafío</li>
+                                <li>Trabaja en equipo y completen el desafío con mucho ingenio. Tienen 60 Minutos</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m3">
+                            <div class="icon-block">
+                                <h2 class="center">
+                                    <div id="notdraggable" title="Parece que puedes mover esta llave"><i
+
+                                                                                                      class="fa fa-key"></i></div>
+                                </h2>
+                                <h5 class="center">Objetivo</h5>
+                                <p class="center">Completar el desafío</p>
+                            </div>
+                        </div>
+                        <div class="col s12 m3">
+                            <div class="icon-block">
+                                <h2 class="center"><i class="fa fa-users"></i></h2>
+                                <h5 class="center">En Equipo</h5>
+                                <p class="center">De 2 a 8 jugadores</p>
+                            </div>
+                        </div>
+                        <div class="col s12 m3">
+                            <div class="icon-block">
+                                <h2 class="center"><i class="fa fa-clock-o"></i></h2>
+                                <h5 class="center">Tiempo</h5>
+                                <p class="center">Antes de 60 Minutos</p>
+                            </div>
+                        </div>
+                        <div class="col s12 m3">
+                            <div class="icon-block">
+                                <h2 class="center"><i class="fa fa-money"></i></h2>
+                                <h5 class="center">Precio</h5>
+                                <p class="center">{{global.price | currency:undefined:0}} por
+                                    persona</p>
+                            </div>
+                        </div>
+
+                        <div class="col s12 center">
+                            <a href="#!faq"  class="btn waves-effect waves-light">¿Tienes más preguntas?</a>
+                        </div>
+                    </div>
+                    <a id="cuartos"></a>
+                    <div class="row">
+                        <div class="col s12 center">
+                            <h4>¿Qué misiones puedo elegir?</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6 no-padding">
+                    <div class="parallax-container valign-wrapper">
+                        <div class="section no-pad-bot">
+                            <div class="container">
+                                <div class="row center">
+                                    <div class="card grey darken-2">
+                                        <div class="card-content white-text"> <span class="card-title">Cronos</span>
+                                            <p>Bienvenido al juego de Cronos. Encuentra el tesoro del Olimpo con ayuda de los dioses griegos.</p>
+                                        </div>
+                                        <div class="card-action grey darken-4">
+                                            <a class="btn btn-block waves-effect waves-light" href="#!cuarto1">Información y reservaciones</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="parallax"><img src="/img/background6.jpg" alt="El templo perdido"></div>
+                    </div>
+                </div>
+                <div class="col s12 m6 no-padding">
+                    <div class="parallax-container valign-wrapper">
+                        <div class="unavailable"></div>
+                        <div class="section no-pad-bot">
+                            <div class="container">
+                                <div class="row center">
+                                    <div class="card grey darken-2">
+                                        <div class="card-content white-text"> <span class="card-title">Esper</span>
+                                            <p>Forma parte de una organización secreta y resuelve el misterio paranormal</p>
+                                        </div>
+                                        <div class="card-action grey darken-4"> <a href="#">Ver
+                                            más información</a> <a href="#">Reservar</a> </div>
+                                        <!--div class="card-action black red-text"> ADVERTENCIA: Este desafío es para mayores de 18 años</div -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="parallax"><img src="/img/background4.jpg" alt="El sanatorio"></div>
+                    </div>
+                </div>
+            </div>
+            <!--div class="container">
+<div class="section">
+<div class="row">
+<div class="col s12 center">
+<h4>¿Vale la pena?</h4>
+<p class="left-align">Si aún tienes dudas, mira estas fotos y
+comentarios de nuestros clientes:</p>
+<div class="row">
+<div class="col s4">
+<div class="card-panel">
+<div class="quote">This is an example quotation that uses the blockquote tag.</div>
+<span class="quotereference">- Esteban Mata</span>
+</div>
+</div>
+<div class="col s4">
+<div class="card-panel">
+<div class="quote">Increíble</div>
+<span class="quotereference"><a href="https://www.facebook.com/thecouchcr/" target="_blank">The Couch</a></span>
+</div>
+</div>
+<div class="col s4">
+<div class="card-panel">
+<div class="quote">This is an example quotation that uses the blockquote tag.</div>
+<span class="quotereference">- Esteban Mata</span>
+</div>
+</div>
+<div class="col s4">
+<div class="card-panel">
+<div class="quote">This is an example quotation that uses the blockquote tag.</div>
+<span class="quotereference">- Esteban Mata</span>
+</div>
+</div>
+<div class="col s4">
+<div class="card-panel">
+<img src="/img/personal/mata.png" class="responsive-img">
+<span class="quotereference">- Esteban Mata</span>
+</div>
+</div>
+<div class="col s4">
+<div class="card-panel">
+<div class="quote">This is an example quotation that uses the blockquote tag.</div>
+<span class="quotereference">- Esteban Mata</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div -->
+            <div class="parallax-container valign-wrapper">
+                <div class="section no-pad-bot">
+                    <div class="container">
+                        <div class="center">
+                            <h5 class="header grey darken-3 card light">Viaja por una hora a otro tiempo
+                                y lugar</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="parallax"><img src="/img/background2.jpg" alt="Unsplashed background img 2"></div>
+            </div>
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <h4>¡Oh, algo se abrió</h4>
+                    <p>Dentro encuentras esto...</p>
+                    <img src="/img/key.png" class="responsive-img" />
+                    <input type="text" id="secreteCode" ng-model="homectrl.specCode" ng-change="homectrl.checkCode" placeholder="Digite el código"/>
+                    <p>{{homectrl.results}}</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

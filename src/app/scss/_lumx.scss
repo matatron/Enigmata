@@ -1,0 +1,12 @@
+$base-text-color:       $white;
+$primary:               $green-500 !default;
+$primary-hue-1:         $green-100 !default;
+$primary-hue-2:         $green-700 !default;
+$accent:                $orange-A200  !default;
+$accent-hue-1:          $orange-A100  !default;
+$accent-hue-2:          $orange-A400  !default;
+$base-background-color: $grey-900;
+
+.primary {
+	@extend .blue, .lighten-4;
+}
