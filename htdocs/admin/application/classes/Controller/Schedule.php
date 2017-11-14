@@ -26,6 +26,14 @@ class Controller_Schedule extends Controller_Website {
 
         $this->template->title = 'Horarios';
         $this->template->content = View::factory('schedule/slots')->bind('cuartos', $cuartos);
+    }
+    public function action_edit() {
+        $id = $this->request->param('id');
+        $unicode = "_:".$id.":%";
+        $reservations = ORM::factory('Reservation')->where('unicode', 'LIKE', $unicode)->find_all();
+
+        $this->template->title = 'Horario del '.$id;
+        $this->template->content = View::factory('schedule/edit')->bind('reservations', $reservations);
 
     }
 

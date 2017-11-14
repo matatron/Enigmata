@@ -39,18 +39,18 @@
                         <a href="/admin/"><i class="fa fa-home"></i> <span>Inicio</span></a>
                     </li>
 <?php if(Auth::instance()->logged_in()) { ?>
-                    <li <?php if ($controller=="reservas") echo 'class="active"'; ?>>
+                    <li <?php if ($controller=="Reservas") echo 'class="active"'; ?>>
                         <a href="/admin/reservas/index"><i class="fa fa-group"></i> <span>Reservaciones</span></a>
                     </li>
-<?php if(Auth::instance()->logged_in("admin")) { ?>
                     <li <?php if ($controller=="Schedule") echo 'class="active"'; ?>>
                         <a href="/admin/schedule/index"><i class="fa fa-calendar"></i> <span>Cronograma</span></a>
                     </li>
+<?php if(Auth::instance()->logged_in("admin")) { ?>
                     <li <?php if ($controller=="Coupons") echo 'class="active"'; ?>>
                         <a href="/admin/coupons/index"><i class="fa fa-money"></i> <span>Descuentos</span></a>
                     </li>
-                    <li <?php if ($controller=="Coupons") echo 'class="active"'; ?>>
-                        <a href="/admin/coupons/index"><i class="fa fa-users"></i> <span>Personal</span></a>
+                    <li <?php if ($controller=="Usuario") echo 'class="active"'; ?>>
+                        <a href="/admin/usuario/index"><i class="fa fa-users"></i> <span>Personal</span></a>
                     </li>
 <?php } ?>
 
@@ -84,6 +84,7 @@
         <script src="/admin/unicorn/js/jquery.sparkline.min.js"></script>
         <script src="/admin/unicorn/js/jquery.icheck.min.js"></script>
         <script src="/admin/unicorn/js/select2.min.js"></script>
+        <script src="/admin/unicorn/js/bootstrap-datepicker.js"></script>
 
         <script src="/admin/unicorn/js/jquery.nicescroll.min.js"></script>
         <script src="/admin/unicorn/js/unicorn.js"></script>

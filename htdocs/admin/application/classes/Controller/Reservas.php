@@ -6,8 +6,9 @@ class Controller_Reservas extends Controller_Website {
 
     public function action_index()
     {
+        setlocale(LC_ALL, "es_ES", 'Spanish_Spain', 'Spanish');
 
-        $reservaciones = ORM::factory('Reservation')->where('date', ">" , time()-86400)->and_where('email', 'IS NOT', NULL)->order_by('date', 'ASC')->find_all();
+        $reservaciones = ORM::factory('Reservation')->where('date', ">" , time()-14400)->and_where('email', 'IS NOT', NULL)->order_by('date', 'ASC')->find_all();
 
         $this->template->title = 'Reservaciones';
         $this->template->content = View::factory('reservas/index')->bind("reservaciones", $reservaciones);
@@ -19,6 +20,16 @@ class Controller_Reservas extends Controller_Website {
         $id = $this->request->param('id');
 
         $reservacion = ORM::factory('Reservation', $id);
+
+        if (HTTP_Request::POST == $this->request->method())
+        {
+            $reservacion->values($this->request->post());
+            $reservacion->save();
+            $log = ORM::factory("Log");
+            $log->log(Auth::instance()->get_user()->username." modificó la reservación ".$reservacion->unicode);
+            header('Location: /admin/reservas/index');
+            die();
+        }
         $this->template->title = 'Reservacion '.$id;
         $this->template->content = View::factory('reservas/detalle')->bind("reservacion", $reservacion);
 

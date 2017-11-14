@@ -2,4 +2,7 @@
 
 class Model_Coupon extends ORM
 {
+
+    protected $_belongs_to = array('user' => array());
+
 }

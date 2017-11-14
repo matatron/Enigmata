@@ -12,7 +12,7 @@
         function($locationProvider, $routeProvider) {
             $locationProvider.hashPrefix('!');
             // routes
-            var mainTitle = 'Enigmata',
+            var mainTitle = 'Enigmata Escape Room',
                 prefix = mainTitle + ' > ';
             $routeProvider
                 .when("/", {
@@ -22,7 +22,7 @@
                 controller: "MainController"
             })
                 .when("/faq", {
-                title: prefix + 'FAQ',
+                title: prefix + 'Preguntas frecuentes',
                 activeMenu: 2,
                 templateUrl: "faq.html",
                 controller: "MainController"
@@ -34,13 +34,13 @@
                 controller: "EventosController"
             })
                 .when("/cuarto1", {
-                title: prefix + 'Cuarto 1',
+                title: prefix + 'Reservar en Cronos',
                 activeMenu: 4,
                 templateUrl: "cuarto1.html",
                 controller: "RoomController as roomCtrl"
             })
                 .when("/cuarto2", {
-                title: prefix + 'Cuarto 2',
+                title: prefix + 'Reservar en Esper',
                 activeMenu: 4,
                 templateUrl: "cuarto2.html",
                 controller: "RoomController as roomCtrl"
@@ -87,6 +87,12 @@
                 activeMenu: 0,
                 templateUrl: "wrong.html",
                 controller: "WrongController"
+            })
+                .when("/calificacion", {
+                title: prefix + 'Calificación de experiencia',
+                activeMenu: 0,
+                templateUrl: "calificacion.html",
+                controller: "ReviewController"
             })
                 .otherwise({
                 redirectTo: '/'
@@ -159,6 +165,10 @@
 
     }]);
 
+    app.controller('ReviewController', ['$scope', '$http', '$interval', '$timeout', '$filter', function($scope, $http, $interval, $timeout, $filter) {
+        console.log("calificacion")
+    }]);
+
     app.controller('RoomController', ['$scope', '$http', '$interval', '$timeout', '$filter', function($scope, $http, $interval, $timeout, $filter) {
         var roomCtrl = this;
         roomCtrl.step = 1;
@@ -167,7 +177,9 @@
         roomCtrl.thisday = roomCtrl.minDate;
         roomCtrl.reservation = {};
         roomCtrl.reservation.people = 1;
+        roomCtrl.reservation.coupon = '';
         roomCtrl.showLoading = false;
+        roomCtrl.lastCode = ''
 
         window.roomCtrl = roomCtrl;
 
@@ -276,6 +288,19 @@
             }
         };
 
+        roomCtrl.verificarCodigo = function() {
+            roomCtrl.lastCode = roomCtrl.reservation.coupon;
+            roomCtrl.codeDescription = "";
+            $http.get('/rsvp/checkcode/?code='+roomCtrl.reservation.coupon).then(function(response) {
+                if (response.data.id > 0) {
+
+                }
+                roomCtrl.codeDescription = response.data.description;
+            }, function() {
+
+            });
+
+        }
 
         roomCtrl.interval = $interval(function() {
             if (roomCtrl.room>0) {

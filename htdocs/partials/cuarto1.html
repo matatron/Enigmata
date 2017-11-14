@@ -160,16 +160,18 @@
                                     watch="">
                                 <option ng-repeat="choice in roomCtrl.peopleChoices" ng-value="{{choice.value}}">{{choice.label}}</option>
                             </select>
-                            <label>Número de personas:</label>
+                            <label>Número de jugadores:</label>
                         </div>
                         <hr/>
-                        <div class="input-field col s12 m4 hiddendiv"> <input id="coupon" placeholder="Opcional"
-                                                                    class="validate" ng-model="roomCtrl.reservation.coupon" type="text">
+                        <div class="input-field col s12 m4 ">
+                            <input id="coupon" placeholder="Opcional" class="validate" ng-model="roomCtrl.reservation.coupon" type="text">
                             <label for="coupon" class="active">Cupón de Descuento:</label>
                         </div>
-                        <div class="input-field col s12 m8 hiddendiv">
-                            <p>Si tiene un código o cupón de descuento, puede digitarlo
-                                aqui.</p>
+                        <div class="input-field col s12 m8 l4">
+                            <button type="button" ng-click="roomCtrl.verificarCodigo()" class="btn btn-default" ng-disabled="roomCtrl.reservation.coupon == roomCtrl.lastCode">Verificar código</button>
+                        </div>
+                        <div class="input-field col s12 m12 l4">
+                            {{roomCtrl.codeDescription}}
                         </div>
                         <div class="input-field col s12" ng-hide="roomCtrl.showLoading">
                             <button type="submit" class="btn btn-primary" ng-disabled="finalData.$invalid">Hacer reservación</button> </div>

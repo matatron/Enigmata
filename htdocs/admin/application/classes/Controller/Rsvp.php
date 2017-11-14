@@ -16,6 +16,8 @@ class Controller_Rsvp extends Controller_Json {
 
     private $reservations = [];
 
+    private $rsvLimit = 43200; //12 horas
+
     public function action_confirm() {
         $id = $this->request->param('id');
         $code = $this->request->query('code');
@@ -32,6 +34,23 @@ class Controller_Rsvp extends Controller_Json {
         die();
     }
 
+    public function action_checkcode() {
+        $code = trim(strtolower($this->request->query('code')));
+        $coupon = ORM::factory('Coupon')->where("code", "=", $code)->find();
+
+        if ($coupon->loaded()) {
+            if ($coupon->limitdate != null && time() > $coupon->limitdate) {
+                $this->data = ["id"=> "0", "description"=>"El código ya venció"];
+            } else if ($coupon->limituses==0) {
+                $this->data = ["id"=> "0", "description"=>"El código ya agotó su número máximo de usos"];
+            } else {
+                $this->data = $coupon->as_array();
+            }
+        } else {
+            $this->data = ["id"=> "0", "description"=>"El código no existe"];
+        }
+    }
+
     public function action_submit() {
         $data = json_decode($this->request->body(), true);
 
@@ -45,14 +64,15 @@ class Controller_Rsvp extends Controller_Json {
         $reserv->prepaid = 0;
         $reserv->randomcode = substr(md5(microtime()),rand(0,26),10);
 
-        /*
+
         if (isset($data["coupon"]) && $data["coupon"] != "") {
+            $reserv->couponraw = $data["coupon"];
             $code = ORM::factory("Coupon")->where("code", "=", strtolower($data["coupon"]))->find();
             if ($code->loaded() && isset($code->id)) {
                 $reserv->coupon_id = $code->id;
             }
         }
-        */
+
 
         $readable["room"] = $data["room_humana"];
         $readable["date"] = $data["fecha_humana"];
@@ -69,17 +89,16 @@ class Controller_Rsvp extends Controller_Json {
                 'to'      => $reserv->email
             );
 
-            $code = Email::send('default', $message['subject'], $message['body'], $message['from'], $message['to'], 'text/html');
+            if (true) {
+                $code = Email::send('default', $message['subject'], $message['body'], $message['from'], $message['to'], 'text/html');
 
-            $noti1 = Email::send('default', "Nueva reservación", "Hola Yuki.  Hay una nueva reservación para el ".$data["fecha_humana"], $message['from'], "snuffparty@gmail.com", 'text/html');
-            $noti1 = Email::send('default', "Nueva reservación", "Hola Mata.  Hay una nueva reservación para el ".$data["fecha_humana"], $message['from'], "matatron@gmail.com", 'text/html');
+                $noti1 = Email::send('default', "Nueva reservación", "Hola Yuki.  Hay una nueva reservación para el ".$data["fecha_humana"], $message['from'], "snuffparty@gmail.com", 'text/html');
+                $noti1 = Email::send('default', "Nueva reservación", "Hola Mata.  Hay una nueva reservación para el ".$data["fecha_humana"], $message['from'], "matatron@gmail.com", 'text/html');
+            }
 
 
             $log = ORM::factory("Log");
-            $log->date = time();
-            $log->text = "Reservación para ".$reserv->people." personas creada para el ".$readable["date"]." por ".$reserv->email;
-            $log->user = 0;
-            $log->save();
+            $log->log("Reservación para ".$reserv->people." personas creada para el ".$readable["date"]." por ".$reserv->email, true);
 
             $this->data = $reserv->as_array();
         }
@@ -90,6 +109,57 @@ class Controller_Rsvp extends Controller_Json {
 
     }
 
+    public function action_delete() {
+        $id = $this->request->post('id');
+        $codigo = $this->request->post('codigo');
+
+        if ($codigo == "Enigmata") {
+            $reserv = ORM::factory('Reservation', $id);
+            $reserv->comments .= "\r\nEste espacio anteriormente fue reservado por ".$reserv->email." para ".$reserv->people." personas pero fue borrado por ".Auth::instance()->get_user()->username;
+            $reserv->reservationdate = 0;
+            $reserv->people = null;
+            $reserv->coupon_id = null;
+            $reserv->couponraw = "";
+            $reserv->name = null;
+            $reserv->email = null;
+            $reserv->phone = null;
+            $reserv->confirmed = 0;
+            $reserv->prepaid = 0;
+            $reserv->randomcode = null;
+            $reserv->ip = null;
+            $reserv->save();
+            $log = ORM::factory("Log");
+            $log->log(Auth::instance()->get_user()->username." borró la reservación ".$reserv->unicode);
+            $this->data = ["result"=>true];
+        }else{
+            $this->data = ["result"=>false];
+        }
+
+    }
+
+    public function action_resend() {
+        setlocale(LC_ALL, "es_ES", 'Spanish_Spain', 'Spanish');
+
+        $id = $this->request->param('id');
+        $reserv = ORM::factory('Reservation', $id);
+
+        $readable["room"] = $reserv->unicode[0];
+        $readable["date"] = iconv('ISO-8859-2', 'UTF-8', strftime("%A, %d de %B de %Y", $reserv->date));
+        $readable["hour"] = date("H:i", $reserv->date);
+
+        $message = array(
+            'subject' => 'Su reservación en Enigmata Escape Room',
+            'body'    =>  View::factory('rsvpemail')->bind('res', $reserv)->bind('readable',$readable),
+            'from'    => array('no-reply@enigmata.co.cr' => 'Enigmata Escape Room'),
+            'to'      => $reserv->email
+        );
+        $code = Email::send('default', $message['subject'], $message['body'], $message['from'], $message['to'], 'text/html');
+
+        $log = ORM::factory("Log");
+        $log->log(Auth::instance()->get_user()->username." reenvió el correo de la reservación ".$reserv->unicode);
+
+        $this->data = ["code"=>$code];
+    }
 
     public function action_test() {
         $this->data = Email::send('default', "Prueba de correo", "Prueba de correo a Mata", array('no-reply@enigmata.co.cr' => 'Enigmata Escape Room'), "matatron@gmail.com", 'text/html');
@@ -101,11 +171,11 @@ class Controller_Rsvp extends Controller_Json {
     {
         $cuarto = ORM::factory('Cuarto', $this->request->param('room'));
         $date = $this->request->param('date');
-        $unicode = $cuarto."_".$date."%";
-        $reservations = ORM::factory('Reservation')->where('unicode', 'LIKE', $unicode)->and_where("date",">",time()+3600)->find_all();
+        $unicode = $cuarto.":".$date."%";
+        $reservations = ORM::factory('Reservation')->where('unicode', 'LIKE', $unicode)->and_where("date",">",time()+$this->rsvLimit)->find_all();
         $data = [];
         foreach($reservations as $res) {
-            $hora = explode("_", $res->unicode)[2];
+            $hora = explode(":", $res->unicode)[2];
             $horaHumana = substr($hora, 0, -2).":".substr($hora, -2, 2);
             $data[] = [
                 "id" => $res->id,
@@ -130,12 +200,12 @@ class Controller_Rsvp extends Controller_Json {
         $this->yesterday = time() - 60 * 60 * 24;
 
         //obtenemos info de cuantos ya estan ocupados
-        $unicode = $cuarto."_".$this->currentYear."-".$this->currentMonth."%";
-        $reservations = ORM::factory('Reservation')->where('unicode', 'LIKE', $unicode)->and_where('people', 'IS', NULL)->and_where("date",">",time()+3600)->find_all();
+        $unicode = $cuarto.":".$this->currentYear."-".$this->currentMonth."%";
+        $reservations = ORM::factory('Reservation')->where('unicode', 'LIKE', $unicode)->and_where('people', 'IS', NULL)->and_where("date",">",time()+$this->rsvLimit)->find_all();
 
         $resdays=[];
         foreach($reservations as $res) {
-            $parts = explode("_", $res->unicode);
+            $parts = explode(":", $res->unicode);
             if (isset($resdays[$parts[1]])) {
                 $resdays[$parts[1]]++;
             } else {
@@ -239,11 +309,9 @@ class Controller_Rsvp extends Controller_Json {
         $data = [];
         for($i=0; $i<84; $i++) {
             $day = $firstday + $i*86400;
-            $unicode = "1_".date("Y-n-j", $day)."_%";
+            $unicode = "_:".date("Y-n-j", $day).":%";
             $reservations = ORM::factory('Reservation')->where('unicode', 'LIKE', $unicode)->count_all();
-            $unicode = "2_".date("Y-n-j", $day)."_%";
-            $reservations += ORM::factory('Reservation')->where('unicode', 'LIKE', $unicode)->count_all();
-            $data[date("Y-m-d", $day)] = $reservations;
+            $data[date("Y-n-j", $day)] = $reservations;
 
         }
         $this->data = $data;
@@ -260,7 +328,7 @@ class Controller_Rsvp extends Controller_Json {
             if ($c->enabled) foreach($slots as $slot) {
                 try {
                     $reserv = ORM::factory('Reservation');
-                    $reserv->unicode = $c->id."_".$dia."_".$slot;
+                    $reserv->unicode = $c->id.":".$dia.":".$slot;
                     $reserv->date = strtotime($dia." ".$slot);
                     $reserv->save();
                     $count++;

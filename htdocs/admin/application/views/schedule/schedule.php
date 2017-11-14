@@ -1,6 +1,6 @@
 <a class="btn btn-default pull-right" href="slots">Modificar horario de salas</a>
 <div class="table-responsive">
-    <table class="table" style="table-layout: fixed">
+    <table class="table " style="table-layout: fixed" id="cronograma">
         <tr>
             <th>Semana</th>
             <td>Lunes</td>
@@ -19,9 +19,10 @@
             <th><?=date("W", $day); ?></th>
             <?php for($j=0; $j<7; $j++) { ?>
             <td class="daycell month<?=date("m", $day); ?>" data-day="<?=date("Y-n-j", $day); ?>">
-                <?=date("d", $day); $day += 86400;?>
+                <?=date("d", $day);?>
                 <button class="btn btn-block accion-abrir" onclick="abrir(this)">Abrir</button>
-                <button class="btn btn-block accion-editar btn-info"  onclick="editar(this)">Editar</button>
+                <a class="btn btn-block accion-editar btn-info" href="/admin/schedule/edit/<?=date("Y-n-j", $day); ?>">Editar</a>
+                <?php $day += 86400; ?>
             </td>
             <?php } ?>
         </tr>
