@@ -26,6 +26,8 @@
         <meta name="theme-color" content="#ffffff">
         <!-- styles -->
         <link href="https://fonts.googleapis.com/css?family=Lato:900|Orbitron:900|Russo+One" rel="stylesheet">
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css"/>
         <link rel="stylesheet" href="style.css"/>
     </head>
@@ -33,12 +35,10 @@
         <div class="navbar-fixed">
             <ul id="dropdown1" class="dropdown-content">
                 <li ng-class="{'active': activeMenu == 41}"><a href="#!cuarto1">Cronos</a></li>
-                <li ng-class="{'active': activeMenu == 42}"><a href="#!cuarto2" disabled>Esper</a></li>
+                <li ng-class="{'active': activeMenu == 42}"><a href="#!cuarto2">Olivia</a></li>
             </ul>
             <ul id="dropdown2" class="dropdown-content">
                 <li ng-class="{'active': activeMenu == 51}"><a href="#!historia">Historia</a></li>
-                <li ng-class="{'active': activeMenu == 52}"><a href="#!nosotros">Nosotros</a></li>
-                <li ng-class="{'active': activeMenu == 53}"><a href="#!consejos">Consejos</a></li>
                 <li ng-class="{'active': activeMenu == 54}"><a href="#!prensa">Prensa</a></li>
                 <li ng-class="{'active': activeMenu == 55}"><a href="#!galeria">Galerías</a></li>
             </ul>
@@ -77,11 +77,9 @@
                         </li>
                         <li class="divider"></li>
                         <li ng-class="{'active': activeMenu == 41}"><a href="#!cuarto1">Cronos</a></li>
-                        <li ng-class="{'active': activeMenu == 42}"><a href="#!cuarto2" disabled>Esper</a></li>
+                        <li ng-class="{'active': activeMenu == 42}"><a href="#!cuarto2">Olivia</a></li>
                         <li class="divider"></li>
                         <li ng-class="{'active': activeMenu == 51}"><a href="#!historia">Historia</a></li>
-                        <li ng-class="{'active': activeMenu == 52}"><a href="#!nosotros">Nosotros</a></li>
-                        <li ng-class="{'active': activeMenu == 53}"><a href="#!consejos">Consejos</a></li>
                         <li ng-class="{'active': activeMenu == 54}"><a href="#!prensa">Prensa</a></li>
                         <li ng-class="{'active': activeMenu == 55}"><a href="#!galeria">Galerías</a></li>
 

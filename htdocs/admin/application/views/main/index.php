@@ -26,7 +26,7 @@
                         </div>
                         <div class="article-post">
                             <p class="bold">
-                                <?= $res->people; ?> personas el <?= date("d/M h:i", $res->date); ?>
+                                <?= $res->people; ?> personas el <?= date("d/M h:i", $res->date); ?> en la sala <?= $res->unicode[0]; ?>
                             </p>
                             <span>Por: <?= $res->email; ?> el <?= date("d/M h:iA", $res->reservationdate); ?></span>
                             <a href="/admin/reservas/editar/<?=$res->id;?>" class="btn btn-primary btn-xs">Editar</a>

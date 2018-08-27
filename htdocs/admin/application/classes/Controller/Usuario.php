@@ -35,4 +35,25 @@ class Controller_Usuario extends Controller_Website {
 
     }
 
+    public function action_sendemail()
+    {
+        $id = $this->request->param('id');
+        $user = ORM::factory('user', $id);
+        $user->sendemail = 1;
+        $user->save();
+        echo 1;
+        die();
+    }
+
+    public function action_nosendemail()
+    {
+        $id = $this->request->param('id');
+        $user = ORM::factory('user', $id);
+        $user->sendemail = 0;
+        $user->save();
+        echo 0;
+        die();
+    }
+
+
 } // End

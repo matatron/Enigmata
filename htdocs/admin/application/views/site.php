@@ -45,12 +45,17 @@
                     <li <?php if ($controller=="Schedule") echo 'class="active"'; ?>>
                         <a href="/admin/schedule/index"><i class="fa fa-calendar"></i> <span>Cronograma</span></a>
                     </li>
-<?php if(Auth::instance()->logged_in("admin")) { ?>
-                    <li <?php if ($controller=="Coupons") echo 'class="active"'; ?>>
-                        <a href="/admin/coupons/index"><i class="fa fa-money"></i> <span>Descuentos</span></a>
+                    <li <?php if ($controller=="Records") echo 'class="active"'; ?>>
+                        <a href="/admin/records/index"><i class="fa fa-clock-o"></i> <span>Records</span></a>
                     </li>
+<?php if(Auth::instance()->logged_in("admin")) { ?>
                     <li <?php if ($controller=="Usuario") echo 'class="active"'; ?>>
                         <a href="/admin/usuario/index"><i class="fa fa-users"></i> <span>Personal</span></a>
+                    </li>
+<?php } ?>
+<?php if(0) { ?>
+                    <li <?php if ($controller=="Coupons") echo 'class="active"'; ?>>
+                        <a href="/admin/coupons/index"><i class="fa fa-money"></i> <span>Descuentos</span></a>
                     </li>
 <?php } ?>
 

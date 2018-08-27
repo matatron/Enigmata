@@ -1,72 +1,259 @@
-<div class="parallax-container valign-wrapper">
+<div class="parallax-container valign-wrapper" ng-init="roomCtrl.room = 2">
     <div class="section no-pad-bot">
         <div class="container">
             <div class="row center">
-                <h1 class="header col s12 light">El templo perdido</h1>
+                <h1 class="header col s12 dark">Atrévete a descubrir la verdad</h1>
             </div>
         </div>
     </div>
-    <div class="parallax"><img src="/img/background6.jpg" alt="Templo perdido"></div>
+    <div class="parallax"><img src="/img/background8.jpg" alt="Olivia"></div>
 </div>
 <div class="container">
     <div class="row">
-        <div class="col s12">
-            <h4>"La entrada al templo solo se abre durante un eclipse de sol.  Adentro hay un gran tesoro escondido esperando ser descubierto, pero solo queda 1 hora antes que el eclipse termine y la entrada se cierre..."</h4>
+        <div class="col s12 justify">
+            <p>Ustedes forman parte de la SCP, una organización cuya misión es investigar y contener amenazas paranormales. La misión de esta noche es en la casa del matrimonio Wilhelm, antiguos miembros ya retirados que por muchos años formaron parte de la organización.</p>
+            <p>Juntos Edworth y Olivia investigaron y resolvieron decenas de casos, entrenaron a otros agentes y ganaron el respeto de la organización al punto que al retirarse les permitieron guardar algunos objetos neutralizados para su colección personal.</p>
+            <p>Pero la tragedia alcanzó al matrimonio. Hace un mes Olivia falleció de causas naturales y esta noche los agentes de la SCP encontraron el cuerpo inherte de Edworth, sin heridas visibles pero sumamente demacrado, junto a un mensaje pidiendo ayuda a la SCP. ¿Podrán resolver este misterio?</p>
+            <br/>
+            <br/>
+        </div>
+        <div class="col s6">
+            <strong>Estadísticas basadas en valoraciones de jugadores anteriores:</strong>
+            <ul>
+                <li>Dificultad: Media</li>
+                <li>Porcentaje de éxito: 65%</li>
+                <li>Decoración: 4/5</li>
+                <li>Sustos: 4/5</li>
+                <li>Diversión: 5/5</li>
+            </ul>
+        </div>
+        <div class="col s6">
+            <strong>Mejores tiempos:</strong>
+            <ul>
+                <li ng-repeat="(n, data) in roomCtrl.stats">
+                    {{n}} jugadores:
+                    <span ng-if="data.name==''">
+                        No disponible
+                    </span>
+                    <span ng-if="data.name!=''">
+                        {{data.time}} minutos, equipo "{{data.name}}"
+                    </span>
+                </li>
+            </ul>
         </div>
     </div>
-    <ul class="collection">
-        <li class="collection-item">Alvin</li>
-        <li class="collection-item">Alvin</li>
-        <li class="collection-item">Alvin</li>
-        <li class="collection-item">Alvin</li>
+    <div class="row"> </div>
+    <h4>¡Reserva ahora!</h4>
+    <ul class="collapsible popout" data-collapsible="accordion" ng-if="global.rsvpEnabled">
+        <li>
+            <div class="collapsible-header active">Paso 1: Fecha</div>
+            <div class="collapsible-body"> <strong> Seleccione la fecha que desea
+                asistir </strong>
+                <hr> <span class="btn waves-light waves-effect pull-left" ng-click="roomCtrl.prevMonth()"
+                           ng-disabled="roomCtrl.thisday.getTime() == roomCtrl.minDate.getTime()">
+                <i
+                   class="fa fa-chevron-left"></i></span> <span class="btn waves-light waves-effect pull-right" ng-click="roomCtrl.nextMonth()"><i class="fa fa-chevron-right"></i></span>
+                <h5 class="center">{{roomCtrl.thisday | date : 'MMMM yyyy' |
+                    uppercase}}</h5>
+                <table class="bordered calendar" ng-hide="roomCtrl.showLoading">
+                    <thead>
+                        <tr>
+                            <th width="14%">Lunes</th>
+                            <th width="14%">Martes</th>
+                            <th width="14%">Miercoles</th>
+                            <th width="14%">Jueves</th>
+                            <th width="14%">Viernes</th>
+                            <th width="14%">Sábado</th>
+                            <th width="14%">Domingo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="week in roomCtrl.weeks">
+                            <td ng-repeat="day in week track by $index">
+                                <a class="waves-effect waves-light btn-flat" ng-class="{tooltipped: day.valid}" data-position="bottom" data-tooltip="{{day.slots}} horarios disponibles"
+                                   ng-if="day.date" ng-disabled="!day.valid" ng-click="roomCtrl.selectDay(day.fullDate)">
+                                    {{day.date}} </a> </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="input-field col s12" ng-show="roomCtrl.showLoading">
+                    <div class="progress">
+                        <div class="indeterminate"></div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="collapsible-header">Paso 2: Hora</div>
+            <div class="collapsible-body">
+                <div ng-if="roomCtrl.step &lt; 2">Seleccione primero una fecha en el
+                    paso 1</div>
+                <div ng-if="roomCtrl.step == 3">Introduzca sus datos personales. Para
+                    empezar de nuevo seleccione una fecha en el paso 1</div>
+                <div ng-if="roomCtrl.step == 4">Su reservación ha sido enviada. Para
+                    empezar de nuevo seleccione una fecha en el paso 1</div>
+                <div ng-if="roomCtrl.step == 2"> <button ng-click="roomCtrl.backStep(1)"
+                                                         class="btn pull-right btn-flat"><i class="fa fa-chevron-up"></i>
+                    Seleccionar una nueva fecha</button> <br>
+                    <strong> Horarios disponibles para el {{roomCtrl.selectedDateJS |
+                        date : 'fullDate' : '+0000'}} </strong>
+                    <hr>
+                    <span>Se solicita puntualidad en su cita. Si llega 15 minutos o más tarde de la hora de la reservación se descontará tiempo de los 60 minutos de juego.</span>
+                    <hr>
+
+                    <table class="highlight bordered">
+                        <thead>
+                            <tr>
+                                <th width="25%">Hora</th>
+                                <th width="50%">Campos disponibles</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="slot in roomCtrl.slots | orderBy:'order'">
+                                <td>{{slot.start}}</td>
+                                <td>
+                                    <span ng-if="slot.owner == ''">
+                                        <button class="btn pull-right" ng-if="slot.owner == ''" ng-click="roomCtrl.selectSlot(slot)">Seleccionar</button>
+                                        {{slot.people}} jugadores
+                                    </span>
+                                    <span ng-if="slot.owner != ''">Reservado por {{slot.owner}}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="collapsible-header">Paso 3: Datos personales</div>
+            <div class="collapsible-body">
+                <div ng-if="roomCtrl.step == 1">Seleccione primero una fecha en el
+                    paso 1</div>
+                <div ng-if="roomCtrl.step == 2">Seleccione primero un horario en el
+                    paso 2</div>
+                <div ng-if="roomCtrl.step == 4">Su reservación ha sido enviada. Para
+                    empezar de nuevo seleccione una fecha en el paso 1</div>
+                <div ng-if="roomCtrl.step == 3" class="row"> <strong>Por favor
+                    complete los siguientes datos:</strong>
+                    <hr>
+                    <form name="finalData" ng-submit="roomCtrl.submitForm(finalData.$valid)"
+                          novalidate="">
+                        <div class="input-field col s12 m2">
+                            <input id="f1" value="{{roomCtrl.room}}"
+                                   class="validate" disabled="disabled" type="text">
+                            <label for="f1"
+                                   class="active">Cuarto</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <input id="f2" value="{{roomCtrl.selectedDateJS | date : 'fullDate' : '+0000'}}"
+                                   class="validate" disabled="disabled" type="text">
+                            <label for="f2"
+                                   class="active">Fecha</label>
+                        </div>
+                        <div class="input-field col s12 m4">
+                            <input id="f3" value="{{roomCtrl.selectedSlot.start}}"
+                                   class="validate" disabled="disabled" type="text">
+                            <label for="f3"
+                                   class="active">Hora</label>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">person</i>
+                            <input id="name" name="name"
+                                   class="validate" ng-requried="true" ng-model="roomCtrl.reservation.name"
+                                   required="" type="text">
+                            <label for="name">Nombre de quien
+                                hace la reserva</label>
+                        </div>
+                        <div class="input-field col s12 m4">
+                            <i class="material-icons prefix">email</i>
+                            <input id="email" name="email"
+                                   class="validate" ng-requried="true" ng-model="roomCtrl.reservation.email"
+                                   required="" type="email">
+                            <label for="email">Correo Electrónico:</label>
+                        </div>
+                        <div class="input-field col s12 m4">
+                            <i class="material-icons prefix">phone</i>
+                            <input id="phone" name="phone"
+                                   class="validate" ng-requried="true" ng-model="roomCtrl.reservation.phone"
+                                   required="" type="text"> <label for="phone">Teléfono:</label>
+                        </div>
+                        <div class="input-field col s12  m4">
+                            <i class="material-icons prefix">person_add</i>
+                            <select class="" ng-model="roomCtrl.reservation.people" material-select=""
+                                    watch="" >
+                                <option ng-repeat="choice in roomCtrl.peopleChoices" ng-value="{{choice.value}}">{{choice.label}}</option>
+                            </select>
+                            <label class="">Número aproximado de jugadores <sup>*</sup>:</label>
+                        </div>
+
+                        <div class="input-field col s12 m8">
+                            <i class="material-icons prefix">insert_comment</i>
+                            <textarea id="textarea1" class="materialize-textarea" ng-model="roomCtrl.reservation.comments"></textarea>
+                            <label for="textarea1">Comentarios</label>
+                        </div>
+                        <div class="input-field col s12 m4 ">
+                            <input type="checkbox" id='reservaLang' ng-model="roomCtrl.reservation.language" />
+                            <label class="" for="reservaLang">
+                                <span>Check this for a game in english</span>
+                            </label>
+                        </div>
+                        <div class="input-field col s12 m6 ">
+                            <input type="checkbox" id='reservaCupon' ng-model="roomCtrl.reservation.hasCoupon" />
+                            <label class="" for="reservaCupon">
+                                <span>Marque esta casilla si tiene un código o cupón de descuento</span>
+                            </label>
+                        </div>
+                        <div class="input-field col s12 m6 ">
+                            <div ng-show="roomCtrl.reservation.hasCoupon">
+                                <textarea id="textarea2" class="materialize-textarea"  ng-model="roomCtrl.reservation.couponraw"></textarea>
+                                <label for="textarea2">Anote su código o cupones de descuento, o contáctenos por teléfono o chat para verificar los datos de antemano</label>
+                            </div>
+                        </div>
+
+                        <div class="input-field col s12" ng-hide="roomCtrl.showLoading">
+                            <button type="submit" class="btn btn-primary" ng-disabled="finalData.$invalid">Hacer reservación</button>
+                            <div>Notas: </div>
+                            <div>* No es obligatorio que se presente la cantidad de jugadores de la reservación, siempre y cuando cumplan con el mínimo y máximo de jugadores</div>
+                            <div class="red-text">Advertencia: este cuarto tiene juegos de luces intermitentes por lo que no es apto para personas con epilepsia fotosensible</div>
+                        </div>
+                        <div class="input-field col s12" ng-show="roomCtrl.showLoading">
+                            <div class="progress">
+                                <div class="indeterminate"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="collapsible-header">Paso 4: Confirmar reserva</div>
+            <div class="collapsible-body">
+                <div ng-if="roomCtrl.step == 1">Seleccione primero una fecha en el
+                    paso 1</div>
+                <div ng-if="roomCtrl.step == 2">Seleccione primero un horario en el
+                    paso 2</div>
+                <div ng-if="roomCtrl.step == 3">Ingrese sus datos personales</div>
+                <div ng-if="roomCtrl.step &gt;= 4"> <strong>Su reservación ha sido
+                    registrada, ¡pero falta un paso mas!</strong>
+                    <hr>
+                    <p>Se ha enviado un correo a la dirección
+                        {{roomCtrl.reservationResume.email}} con un link.<br>
+                        Haga click en ese link en las próximas 24 horas para confirmar
+                        su reservación como válida.<br>
+                        Es posible que el correo sea clasificado como Spam. Recuerde
+                        revisar su carpeta de Spam si no encuentra el correo.</p>
+                    <p>Un día antes de su fecha de reservación lo estaremos llamando
+                        al teléfono provisto para verificar su asistencia.<br>
+                        Si tiene dudas puede contactarnos por teléfono, correo
+                        electrónico o Facebook.</p>
+                    <p>Muchas gracias por preferir nuestros servicios. Esperamos que
+                        disfrute su juego.</p>
+                </div>
+            </div>
+        </li>
     </ul>
-
-    <ul class="pagination">
-        <li class="disabled"><a href="#!"><i class="fa fa-chevron-left"></i></a></li>
-        <li class="active"><a href="#!">1</a></li>
-        <li class="waves-effect"><a href="#!">2</a></li>
-        <li class="waves-effect"><a href="#!">3</a></li>
-        <li class="waves-effect"><a href="#!">4</a></li>
-        <li class="waves-effect"><a href="#!">5</a></li>
-        <li class="waves-effect"><a href="#!"><i class="fa fa-chevron-right"></i></a></li>
-    </ul>
-
-    <div class="row">
-        <div class="col s12 m3">
-            <div class="icon-block">
-                <h2 class="center"><i class="material-icons">flash_on</i></h2>
-                <h5 class="center">Candados</h5>
-
-                <p class="light">desc</p>
-            </div>
-        </div>
-
-        <div class="col s12 m3">
-            <div class="icon-block">
-                <h2 class="center"><i class="material-icons">group</i></h2>
-                <h5 class="center">Elecgtrónica</h5>
-
-                <p class="light">desc</p>
-            </div>
-        </div>
-
-        <div class="col s12 m3">
-            <div class="icon-block">
-                <h2 class="center"><i class="material-icons">settings</i></h2>
-                <h5 class="center">Acertijos</h5>
-
-                <p class="light">desc</p>
-            </div>
-        </div>
-
-        <div class="col s12 m3">
-            <div class="icon-block">
-                <h2 class="center"><i class="material-icons">settings</i></h2>
-                <h5 class="center">Sustos</h5>
-
-                <p class="light">desc</p>
-            </div>
-        </div>
+    <div ng-if="!global.rsvpEnabled">
+        <p>Lo sentimos pero el sistema de reservaciones está temporalmente desactivado por mantenimiento.  Recuerde seguirnos en Facebook para estar al tanto de cualquier noticia y promociones.</p>
     </div>
-
 </div>

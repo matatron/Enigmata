@@ -22,6 +22,7 @@
                 <?=date("d", $day);?>
                 <button class="btn btn-block accion-abrir" onclick="abrir(this)">Abrir</button>
                 <a class="btn btn-block accion-editar btn-info" href="/admin/schedule/edit/<?=date("Y-n-j", $day); ?>">Editar</a>
+                <a class="btn btn-block accion-editar btn-danger" onclick="cerrar(this)">Cerrar</a>
                 <?php $day += 86400; ?>
             </td>
             <?php } ?>

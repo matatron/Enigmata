@@ -40,7 +40,7 @@
                 controller: "RoomController as roomCtrl"
             })
                 .when("/cuarto2", {
-                title: prefix + 'Reservar en Esper',
+                title: prefix + 'Reservar en Olivia',
                 activeMenu: 4,
                 templateUrl: "cuarto2.html",
                 controller: "RoomController as roomCtrl"
@@ -177,9 +177,12 @@
         roomCtrl.thisday = roomCtrl.minDate;
         roomCtrl.reservation = {};
         roomCtrl.reservation.people = 1;
-        roomCtrl.reservation.coupon = '';
+//        roomCtrl.reservation.coupon = '';
+        roomCtrl.reservation.language = false;
+        roomCtrl.reservation.hasCoupon = false;
+        roomCtrl.reservation.comments = '';
         roomCtrl.showLoading = false;
-        roomCtrl.lastCode = ''
+//        roomCtrl.lastCode = ''
 
         window.roomCtrl = roomCtrl;
 
@@ -234,9 +237,6 @@
             roomCtrl.selectedSlot = slot;
             roomCtrl.peopleChoices = [];
             roomCtrl.reservation.id = slot.id;
-            roomCtrl.reservation.room_humana = roomCtrl.room;
-            roomCtrl.reservation.fecha_humana = $filter("date")(roomCtrl.selectedDateJS,'fullDate','+0000');
-            roomCtrl.reservation.hora_humana = slot.start;
             var minimum = 2;
             //todo: por ahora son 2 minimo, esto depende del cuerto y de la reservacion
             roomCtrl.reservation.people = minimum;
@@ -288,7 +288,7 @@
             }
         };
 
-        roomCtrl.verificarCodigo = function() {
+/*        roomCtrl.verificarCodigo = function() {
             roomCtrl.lastCode = roomCtrl.reservation.coupon;
             roomCtrl.codeDescription = "";
             $http.get('/rsvp/checkcode/?code='+roomCtrl.reservation.coupon).then(function(response) {
@@ -300,12 +300,22 @@
 
             });
 
+        }*/
+
+        roomCtrl.getStats = function() {
+            $http.get('/rsvp/stats/'+roomCtrl.room).then(function(response) {
+                roomCtrl.stats = response.data;
+            }, function() {
+                roomCtrl.stats = [];
+            });
+
         }
 
         roomCtrl.interval = $interval(function() {
             if (roomCtrl.room>0) {
                 $interval.cancel(roomCtrl.interval);
                 roomCtrl.getMonthData();
+                roomCtrl.getStats();
             }
         },100);
 

@@ -6,6 +6,15 @@ class Controller_Json extends Controller {
 
     public function before()
     {
+        try
+        {
+            $this->session = Session::instance();
+        }
+        catch (ErrorException $e)
+        {
+            session_destroy();
+        }
+
         $this->response->headers('Content-Type', 'application/json; charset=utf-8');
     }
 

@@ -9,6 +9,7 @@
                             <th>ID</th>
                             <th>Usuario</th>
                             <th>Email</th>
+                            <th>Correos</th>
                             <th>Ultimo Login</th>
                         </tr>
                     </thead>
@@ -18,6 +19,7 @@
                             <td><?=$user->id;?></td>
                             <td><?=$user->username;?></td>
                             <td><?=$user->email;?></td>
+                            <td><input type="checkbox" class="toggler" data-id="<?=$user->id;?>" onchange="toggleEmail(<?=$user->id;?>)" <?=($user->sendemail)?"checked":"";?>/></td>
                             <td><?=date("d/M h:i", $user->last_login);?></td>
                         </tr>
                         <?php } ?>

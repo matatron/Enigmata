@@ -15,6 +15,18 @@ class Controller_Reservas extends Controller_Website {
 
     }
 
+    public function action_archive()
+    {
+        setlocale(LC_ALL, "es_ES", 'Spanish_Spain', 'Spanish');
+
+        $reservaciones = ORM::factory('Reservation')->where('date', "<=" , time()-14400)->and_where('email', 'IS NOT', NULL)->order_by('date', 'DESC')->find_all();
+
+        $this->template->title = 'Reservaciones anteriores';
+        $this->template->content = View::factory('reservas/archive')->bind("reservaciones", $reservaciones);
+
+    }
+
+
     public function action_editar()
     {
         $id = $this->request->param('id');
@@ -25,8 +37,15 @@ class Controller_Reservas extends Controller_Website {
         {
             $reservacion->values($this->request->post());
             $reservacion->save();
-            $log = ORM::factory("Log");
-            $log->log(Auth::instance()->get_user()->username." modificó la reservación ".$reservacion->unicode);
+
+            if ($reservacion->changed('comments')) {
+                $log = ORM::factory("Log");
+                $log->log(Auth::instance()->get_user()->username." comentó en la reservación ".$reservacion->unicode);
+            }
+            if ($reservacion->changed('confirmed')) {
+                $log = ORM::factory("Log");
+                $log->log(Auth::instance()->get_user()->username." confirmó la reservación ".$reservacion->unicode);
+            }
             header('Location: /admin/reservas/index');
             die();
         }

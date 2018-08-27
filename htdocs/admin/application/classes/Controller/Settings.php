@@ -25,5 +25,4 @@ class Controller_Settings extends Controller_Json {
         $this->data = $this->request->post();
     }
 
-
 }
