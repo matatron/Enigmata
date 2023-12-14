@@ -1,0 +1,169 @@
+---
+room-slider: true
+room-title: "Reanimación"
+page-heading: "El Cuarto"
+---
+
+<div class="section-content">
+
+	<div class="container">
+
+		<!-- Single Room - Content -->
+		<div class="single-room-content">
+			<div class="row">
+				<div class="col-md-12">
+					<!-- Meta -->
+					<div class="room__meta room__meta--lg">
+						<div class="room__meta-item room__meta-item--rating">
+							<div class="room__meta-item-value">
+								{{> _room-rating count="3"}}
+							</div>
+							<div class="room__meta-item-label">Dificultad: media</div>
+						</div>
+						<div class="room__meta-item">
+							<div class="room__meta-item-value">
+								<i class="ion-person-stalker"></i> 2-8
+							</div>
+							<div class="room__meta-item-label">Jugadores</div>
+						</div>
+						<div class="room__meta-item">
+							<div class="room__meta-item-value">
+								<i class="icon-exclamation"></i> +13
+							</div>
+							<div class="room__meta-item-label">años en adelante</div>
+						</div>
+					</div>
+					<!-- Meta / End -->
+
+					<p>De alguna manera, se encuentran dentro de una celda cerrada con un candado, prisioneros de un
+						científico loco que quiere usarlos en sus extraños experimentos...</p>
+
+					<p>El científico volverá en 60 minutos, pero tal vez aún sea posible escapar de alguna manera. ¿Qué
+						significan todas las cosas escritas en las paredes? ¿Qué se esconde tras la puerta que da al
+						laboratorio? ¿Hubo una victima antes que estuvo cerca de escapar?</p>
+
+					<p>Reanimación es un cuarto de suspenso con inspiración en los relatos de H.P. Lovecraft.</p>
+
+					<p>Debido a la presencia de equipo frágil y contenido que puede ser no apto para personas sensibles,
+						el límite de edad de este cuarto es 13 años en adelante.</p>
+				</div>
+			</div>
+		</div>
+		<!-- Single Room - Content / End -->
+
+	</div>
+
+</div>
+
+<!-- Booking Form -->
+<div class="section-content section-content--secondary" ng-app="app">
+	<div class="container">
+
+		<!-- Section Title - Centered -->
+		<div class="section-heading section-heading--divider-top">
+			<h2 class="section-heading__title">Formulario de Reservaciones</h2>
+		</div>
+		<!-- Section Title - Centered / End -->
+		<div class="row">
+			<div class="col-md-4">
+				<!-- Icobox -->
+				<div class="icobox">
+					<div class="icobox__icon-wrapper">
+						<div class="icobox__icon">
+							<i class="icon-tag"></i>
+						</div>
+					</div>
+					<h3 class="icobox__title">Precio</h3>
+					<div class="icobox__desc">
+						La reserva es gratuita, no se cobra por adelantado. Si no puede presentarse contáctenos para
+						liberar el campo.
+					</div>
+				</div>
+				<!-- Icobox / End -->
+			</div>
+			<div class="col-md-4">
+				<!-- Icobox -->
+				<div class="icobox">
+					<div class="icobox__icon-wrapper">
+						<div class="icobox__icon">
+							<i class="icon-people"></i>
+						</div>
+					</div>
+					<h3 class="icobox__title">Tamaño del grupo</h3>
+					<div class="icobox__desc">
+						Cada reserva es para máximo 8 personas. Si su grupo es más grande, contáctenos para discutir
+						opciones y paquetes especiales.
+					</div>
+				</div>
+				<!-- Icobox / End -->
+			</div>
+			<div class="col-md-4">
+				<!-- Icobox -->
+				<div class="icobox">
+					<div class="icobox__icon-wrapper">
+						<div class="icobox__icon">
+							<i class="icon-globe-alt"></i>
+						</div>
+					</div>
+					<h3 class="icobox__title">English spoken</h3>
+					<div class="icobox__desc">
+						If you need a game in English, please contact us to adapt the game and the host to your needs.
+					</div>
+				</div>
+				<!-- Icobox / End -->
+			</div>
+		</div>
+
+		<div class="row" ng-controller="BookingController as ctrl">
+			<div class="col-sm-12 col-md-7" ng-hide="slot">
+
+				{{> _booked-form }}
+
+			</div>
+			<div class="col-sm-12 col-md-5 mt-5" ng-hide="slot">
+				<div ng-hide="info" class="mt-3">
+					Seleccione una fecha para ver los espacios disponibles.
+				</div>
+				<div class="booked-appt-list shown" ng-show='info'>
+					<h2><span>Espacios disponibles el </span><strong>\{{date}}</strong><span></span></h2>
+					<div class="timeslot bookedClearFix mb-1" ng-click="ctrl.reservar(slot)" ng-repeat="slot in slots track by $index">
+						<button class="new-appt button">
+							<span class="button-text"><i class="booked-icon booked-icon-clock"></i>&nbsp;&nbsp; Reservar el espacio de </span>
+							<span class="button-timeslot">\{{slot.inicio}} a \{{slot.final}}</span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12" ng-show="slot">
+				<form>
+				<div class="form-group">
+					<label for="reserva_nombre">Nombre de la persona que reserva</label>
+					<input type="text" class="form-control" id="reserva_nombre" ng-model="slot.name">
+				</div>
+				<div class="row">
+					<div class="col">
+						<label for="reserva_email">Email:</label>
+						<input type="text" class="form-control" id="reserva_email" placeholder="ejemplo@gmail.com" ng-model="slot.email">
+					</div>
+					<div class="col">
+						<label for="reserva_phone">Teléfono de contacto</label>
+						<input type="text" class="form-control" id="reserva_phone" ng-model="slot.phone">
+					</div>
+					<div class="col">
+						<label for="reserva_people">Número de personas</label>
+						<input type="number" min="2" max="8" step="1" class="form-control" id="reserva_people" ng-model="slot.people">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="reserva_Textarea1">Comentarios</label>
+					<textarea class="form-control" id="reserva_Textarea1" rows="3" ng-model="slot.comments"></textarea>
+				</div>
+				<button type="button" class="btn btn-primary" ng-click="ctrl.enviarReserva()">Sign in</button>
+				</form>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+<!-- Booking Form / End -->

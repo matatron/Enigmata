@@ -1,0 +1,135 @@
+@font-face {
+    font-family: 'BlackChancery';
+    font-style: normal;
+    font-weight: normal;
+    src: local('BlackChancery'), url('BLKCHCRY.woff') format('woff');
+}
+.chancery {
+    font-family: 'BlackChancery' !important;
+}
+
+.person-container {
+    border: solid 1px #ccc;
+    border-radius: 5px;
+    display: inline-block;
+    width: 65px;
+    height: 65px;
+    text-align: center;
+    position: relative;
+    margin: 5px;
+}
+.person-container.selected {
+    font-size: 50px;
+    background-color: #ccd;
+    border: solid 1px #999;
+}
+.person-container i {
+    font-size: 50px;
+}
+.person-container strong {
+    position: absolute;
+    top: 0;
+    background: lightsteelblue;
+    left: 0;
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+}
+.nombreProducto {
+
+    border: solid 1px #ccc;
+    min-height: 46px;
+    padding: 3px 11px 6px;
+}
+.nombreProducto h6 {
+    margin-bottom: 0;
+}
+.opcionProducto {
+    font-size: 20px;
+    border: solid 1px #ccc;
+    border-radius: 5px;
+    padding: 0 10px;
+    margin: 2px;
+}
+.opcionProducto label {
+    display: block;
+}
+.sin-enviar {
+    color: #41464b;
+    background-color: #e2e3e5;
+    border-color: #d3d6d8;
+}
+.enviado {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+.preparando {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+    position: relative;
+}
+.preparando::before {
+    content: "Preparando";
+    background-color: #664d03;
+    position: absolute;
+    top:0;
+    right: 0;
+    color: white;
+    font-size: 8px;
+    padding: 2px 5px;
+
+}
+.listo {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+
+}
+.cobrado {
+    color: #636464;
+    background-color: #fefefe;
+    border-color: #fdfdfe;
+}
+
+.productoResumen {
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+.miniProducto {
+    border-radius: 5px;
+    padding: 3px 10px;
+    border-style: solid;
+    border-width: 1px;
+    margin: 2px;
+    display: inline-block;
+}
+.notzero {
+    background-color: #fff3cd;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+.box {
+    display: flex;
+    clear:both;
+  }
+
+  .box > * {
+    flex: 1 1 0;
+    border: solid 1px #41464b;
+    min-height: 30px;
+    text-align: center;
+  }
+  .categoria {
+    background: #646464;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+}

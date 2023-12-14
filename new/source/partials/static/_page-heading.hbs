@@ -1,0 +1,27 @@
+<!-- Page Heading
+================================================== -->
+<div class="page-heading jarallax" data-jarallax data-speed="0.2">
+	<div class="page-heading__inner">
+		<div class="container">
+			{{#ifpage 'blog-post'}}
+			<div class="row col-lg-9 offset-lg-1">
+				<h1 class="page-heading__title page-heading__post-title">{{page-heading}}</h1>
+			</div>
+			{{/ifpage}}
+			{{#unlesspage 'blog-post'}}
+			<h1 class="page-heading__title">{{page-heading}}</h1>
+			<ol class="breadcrumb page-heading__breadcrumb">
+				<li class="breadcrumb-item"><a href="{{../root}}index.html">Inicio</a></li>
+				{{#each breadcrumbs}}
+				{{#if @last}}
+				<li class="breadcrumb-item active" aria-current="page">{{label}}</li>
+				{{else}}
+				<li class="breadcrumb-item"><a href="{{link}}">{{label}}</a></li>
+				{{/if}}
+				{{/each}}
+			</ol>
+			{{/unlesspage}}
+		</div>
+	</div>
+</div>
+<!-- Page Heading / End -->

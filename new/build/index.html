@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+
+	<!-- Basic Page Needs
+	================================================== -->
+	<title>Enigmata - Enigmata Escape Room</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Enigmata Escape Room">
+	<meta name="author" content="Esteban Mata">
+	<meta name="keywords" content="escape, room, quest, real, game, life, puzzle, real-life">
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="assets/img/favicons/favicon.ico">
+	<link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicons/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicons/favicon-152.png">
+
+	<!-- Mobile Specific Metas
+	================================================== -->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+	<!-- Google Web Fonts
+	================================================== -->
+	<link href="https://fonts.googleapis.com/css?family=Anton%7CHind:400,700%7CMontserrat:400,700" rel="stylesheet">
+
+	<!-- CSS
+	================================================== -->
+	<!-- Vendor CSS -->
+	<link href="assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="assets/vendor/animate/animate.css" rel="stylesheet">
+	<link href="assets/vendor/aos/aos.css" rel="stylesheet">
+	<link href="assets/font-icon/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+	<link href="assets/font-icon/ionicons/css/ionicons.min.css" rel="stylesheet">
+	<link href="assets/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+	<link href="assets/vendor/slick/slick.css" rel="stylesheet">
+
+	<!-- Template CSS-->
+	<link href="assets/css/style.css" rel="stylesheet">
+
+	<!-- Booked CSS-->
+	<link href="assets/css/booked.css" rel="stylesheet">
+
+	<!-- Custom CSS-->
+	<link href="assets/css/custom.css" rel="stylesheet">
+
+</head>
+<body>
+
+	<div class="site-wrapper">
+
+		<div id="js-preloader-overlay" class="preloader-overlay">
+			<div id="js-preloader" class="preloader"></div>
+		</div>
+
+		<!-- Overlay -->
+		<div class="site-overlay"></div>
+		<!-- Overlay / End -->
+
+		<!-- Header
+		================================================== -->
+		<header id="header" class="header">
+		
+			<!-- Logo - Image Based -->
+			<div class="header__logo header__logo--img">
+				<a href="index.html"><img src="assets/img/logo.png" srcset="assets/img/logo@2x.png 2x" alt="Enigmata"></a>
+			</div>
+			<!-- Logo - Image Based / End -->
+		
+			<!-- Main Navigation -->
+			<nav class="main-nav">
+				<ul class="main-nav__list">
+					<li class="active"><a href="index.html">Inicio</a></li>
+					<li class=""><a href="preguntas.html">Preguntas Frecuentes</a></li>
+					<li class=""><a href="paquetes.html">Paquetes Especiales</a></li>
+					<li class=""><a href="elcuarto.html">El cuarto</a></li>
+					<li class=""><a href="contacto.html">Contacto</a></li>
+				</ul>
+		
+			</nav>
+			<!-- Main Navigation / End -->
+		
+			<div class="header__spacer"></div>
+		
+			<!-- Secondary Navigation -->
+			<nav class="header__nav header__nav--secondary">
+		
+				<!-- CTA Button -->
+				<a href="elcuarto.html" class="btn btn-outline-secondary nav-btn">
+					<span class="nav-btn__label">¡Reserva ya!</span>
+					<i class="nav-btn__icon icon-calendar"></i>
+				</a>
+				<!-- CTA Button / End -->
+		
+				<!-- Secondary Nav / End -->
+		
+			</nav>
+			<!-- Secondary Navigation / End -->
+		
+			<!-- Mobile Burger Menu Icon -->
+			<a id="header-mobile__toggle" class="burger-menu-icon">
+				<span class="burger-menu-icon__line"></span>
+				<span class="burger-menu-icon__line"></span>
+				<span class="burger-menu-icon__line"></span>
+			</a>
+			<!-- Mobile Burger Menu Icon / End -->
+		
+		</header>
+		<!-- Header / End -->
+
+		<!-- Main Slider -->
+		<div class="main-slider-wrapper">
+			<div class="main-slider js-main-slider">
+				<!-- Slide #1 -->
+				<div class="main-slider__item main-slider__item--img-1">
+					<div class="main-slider__layer main-slider__item-content">
+						<h1 class="main-slider__item-title">
+							<span data-animation="fadeInUp" data-delay="0.1s">Estarán</span>
+							<span data-animation="fadeInUp" data-delay="0.3s">¡Atrapados!</span>
+						</h1>
+						<a href="elcuarto.html" class="main-slider__item-btn btn btn-link btn-link--clean btn-link--dash btn-link--dash-secondary" data-animation="fadeInUp" data-delay="0.6s">Reserva tu campo</a>
+					</div>
+				</div>
+				<!-- Slide #1 / End -->
+		
+				<!-- Slide #2 -->
+				<div class="main-slider__item main-slider__item--img-2">
+					<div class="main-slider__layer main-slider__item-content">
+						<h1 class="main-slider__item-title">
+							<span data-animation="fadeInUp" data-delay="0.1s">El tiempo</span>
+							<span data-animation="fadeInUp" data-delay="0.3s">corre...</span>
+						</h1>
+						<a href="elcuarto.html" class="main-slider__item-btn btn btn-link btn-link--clean btn-link--dash btn-link--dash-secondary" data-animation="fadeInUp" data-delay="0.6s">Reserva tu campo</a>
+					</div>
+				</div>
+				<!-- Slide #2 / End -->
+		
+				<!-- Slide #3 -->
+				<div class="main-slider__item main-slider__item--img-4">
+					<div class="main-slider__layer main-slider__item-content">
+						<h1 class="main-slider__item-title">
+							<span data-animation="fadeInUp" data-delay="0.1s">¿Escaparán</span>
+							<span data-animation="fadeInUp" data-delay="0.3s">en 60 minutos?</span>
+						</h1>
+						<a href="elcuarto.html" class="main-slider__item-btn btn btn-link btn-link--clean btn-link--dash btn-link--dash-secondary" data-animation="fadeInUp" data-delay="0.6s">Reserva tu campo</a>
+					</div>
+				</div>
+				<!-- Slide #3 / End -->
+		
+				<!-- Slide #4 -->
+				<div class="main-slider__item main-slider__item--img-3">
+					<div class="main-slider__layer main-slider__item-content">
+						<h1 class="main-slider__item-title">
+							<span data-animation="fadeInUp" data-delay="0.1s">¿Qué es</span>
+							<span data-animation="fadeInUp" data-delay="0.3s">Enigmata?</span>
+						</h1>
+						<a href="elcuarto.html" class="main-slider__item-btn btn btn-link btn-link--clean btn-link--dash btn-link--dash-secondary" data-animation="fadeInUp" data-delay="0.6s">Reserva tu campo</a>
+					</div>
+				</div>
+				<!-- Slide #4 / End -->
+		
+			</div>
+		</div>
+		<!-- Main Slider / End -->
+		<!-- Content
+		================================================== -->
+		<main class="site-content">
+		
+		<!-- Section: How it works -->
+		<div class="section-content">
+			<div class="container">
+				<div class="section-heading section-heading--divider-top">
+					<h2 class="section-heading__title" data-aos="fade" data-aos-duration="600">¿Cómo funciona?</h2>
+				</div>
+		
+				<div class="row">
+					<div class="col-md-4">
+						<!-- Icobox -->
+						<div class="icobox" data-aos="fade-up" data-aos-duration="800">
+							<div class="icobox__icon-wrapper">
+								<div class="icobox__icon">
+									<i class="icon-lock"></i>
+								</div>
+							</div>
+							<h3 class="icobox__title">Serán encerrados</h3>
+							<div class="icobox__desc">
+								No pueden usar celular ni objetos externos, pero dentro encontrarán una gran variedad de objetos útiles... y algunos inútiles.
+							</div>
+						</div>
+						<!-- Icobox / End -->
+					</div>
+					<div class="col-md-4">
+						<!-- Icobox -->
+						<div class="icobox" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+							<div class="icobox__icon-wrapper">
+								<div class="icobox__icon">
+									<i class="icon-clock"></i>
+								</div>
+							</div>
+							<h3 class="icobox__title">El reloj avanza…</h3>
+							<div class="icobox__desc">
+								¿Podrán encontrar antes de los 60 minutos el código final usando solo el ingenio, la lógica y la observación?
+							</div>
+						</div>
+						<!-- Icobox / End -->
+					</div>
+					<div class="col-md-4">
+						<!-- Icobox -->
+						<div class="icobox" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+							<div class="icobox__icon-wrapper">
+								<div class="icobox__icon">
+									<i class="ion-ios-pulse-strong"></i>
+								</div>
+							</div>
+							<h3 class="icobox__title">Gran Ambientación</h3>
+							<div class="icobox__desc">
+								Luces, sonido y tecnología se combinan para una experiencia inmersiva y realista que pondrá la adrenalina al máximo.<a href="#" class="stretched-link"></a>
+							</div>
+						</div>
+						<!-- Icobox / End -->
+					</div>
+				</div>
+		
+			</div>
+		</div>
+		<!-- Section: How it works / End -->
+		
+		<!-- Section: Testimonials -->
+		<div class="section-content section-content--tertiary">
+			<div class="container">
+				<div class="section-heading section-heading--divider-top">
+					<h2 class="section-heading__title" data-aos="fade" data-aos-duration="600">Testimonios</h2>
+				</div>
+		
+				<!-- Testimonials -->
+				<div class="testimonials js-testimonials-slick slick--arrows-modern" data-aos="fade-up" data-aos-duration="800">
+		
+					<div class="testimonial">
+						<blockquote class="testimonial__txt">
+							Sección en construcción.
+						</blockquote>
+						<div class="testimonial__meta">
+							<figure class="testimonial__author-img">
+								<img src="assets/img/samples/comment-avatar-1.png" alt="">
+							</figure>
+							<h6 class="testimonial__author-name">TBD</h6>
+						</div>
+					</div>
+		
+					<div class="testimonial">
+						<blockquote class="testimonial__txt">
+							Sección en construcción
+						</blockquote>
+						<div class="testimonial__meta">
+							<figure class="testimonial__author-img">
+								<img src="assets/img/samples/comment-avatar-2.png" alt="">
+							</figure>
+							<h6 class="testimonial__author-name">TBD</h6>
+						</div>
+					</div>
+		
+					<div class="testimonial">
+						<blockquote class="testimonial__txt">
+							Sección en construcción.
+						</blockquote>
+						<div class="testimonial__meta">
+							<figure class="testimonial__author-img">
+								<img src="assets/img/samples/comment-avatar-1.png" alt="">
+							</figure>
+							<h6 class="testimonial__author-name">TBD</h6>
+						</div>
+					</div>
+		
+					<div class="testimonial">
+						<blockquote class="testimonial__txt">
+							Sección en construcción.
+						</blockquote>
+						<div class="testimonial__meta">
+							<figure class="testimonial__author-img">
+								<img src="assets/img/samples/comment-avatar-2.png" alt="">
+							</figure>
+							<h6 class="testimonial__author-name">TBD</h6>
+						</div>
+					</div>
+		
+				</div>
+				<!-- Testimonials / End -->
+			</div>
+		</div>
+		<!-- Section: Testimonials / End -->
+		<!-- Section: Features -->
+		<div class="section-content section-content--secondary section-content--gradient-overlay-left section-content--bg1 jarallax" data-jarallax data-speed="0.6">
+			<div class="container">
+		
+				<div class="row">
+					<h4 class="side-title rotated-text col-md-1"><span class="rotated-text__inner">¿Quiénes pueden jugar?</span></h4>
+					<div class="col-md-6">
+						<!-- Features List -->
+						<ul class="features-list list-unstyled">
+		
+							<li class="features-list__item">
+								<div class="features-list__icon" data-aos="zoom-in" data-aos-duration="800">
+									<i class="ion-ios-people-outline"></i>
+								</div>
+								<h5 class="features-list__title" data-aos="fade-left" data-aos-duration="800">Amigos y Familiares</h5>
+							</li>
+		
+							<li class="features-list__item">
+								<div class="features-list__icon" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
+									<i class="ion-ios-briefcase-outline"></i>
+								</div>
+								<h5 class="features-list__title" data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">Compañeros de Trabajo</h5>
+							</li>
+		
+							<li class="features-list__item">
+								<div class="features-list__icon" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
+									<i class="ion-ios-game-controller-b-outline"></i>
+								</div>
+								<h5 class="features-list__title" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">Amantes de los juegos</h5>
+							</li>
+		
+							<li class="features-list__item">
+								<div class="features-list__icon" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">
+									<i class="ion-plane"></i>
+								</div>
+								<h5 class="features-list__title" data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">Turistas</h5>
+							</li>
+		
+						</ul>
+						<!-- Features List / End -->
+					</div>
+				</div>
+		
+			</div>
+		</div>
+		<!-- Section: Features / End -->
+		
+		<!-- Section: Instagram -->
+		<div class="section-content">
+			<div class="container">
+				<div class="section-heading section-heading--divider-top">
+					<h2 class="section-heading__title" data-aos="fade" data-aos-duration="600">Fotos de nuestros clientes</h2>
+					<div class="section-heading__subtitle" data-aos="fade" data-aos-duration="600">
+						<a href="#">#enigmatacr</a>
+					</div>
+				</div>
+		
+				<!-- Instagram Feed -->
+				<ul id="instagram-feed-tagged" class="widget-instagram__list widget-instagram__list--gutter-xs widget-instagram__list--4cols">
+					<li class="widget-instagram__item" data-aos="zoom-in" data-aos-duration="600">
+						<a href="#" class="widget-instagram__link-wrapper" target="_blank">
+							<span class="widget-instagram__plus-sign">
+								<img src="assets/img/samples/insta-shot-1.jpg" alt="" class="widget-instagram__img" />
+								<span class="widget-instagram__item-meta">
+									<span class="widget-instagram__item-meta-likes"><i class="ion-heart"></i> 246</span>
+									<span class="widget-instagram__item-meta-comments"><i class="ion-chatbubble"></i> 22</span>
+								</span>
+							</span>
+						</a>
+					</li>
+					<li class="widget-instagram__item" data-aos="zoom-in" data-aos-duration="600">
+						<a href="#" class="widget-instagram__link-wrapper" target="_blank">
+							<span class="widget-instagram__plus-sign">
+								<img src="assets/img/samples/insta-shot-2.jpg" alt="" class="widget-instagram__img" />
+								<span class="widget-instagram__item-meta">
+									<span class="widget-instagram__item-meta-likes"><i class="ion-heart"></i> 246</span>
+									<span class="widget-instagram__item-meta-comments"><i class="ion-chatbubble"></i> 22</span>
+								</span>
+							</span>
+						</a>
+					</li>
+					<li class="widget-instagram__item" data-aos="zoom-in" data-aos-duration="600">
+						<a href="#" class="widget-instagram__link-wrapper" target="_blank">
+							<span class="widget-instagram__plus-sign">
+								<img src="assets/img/samples/insta-shot-3.jpg" alt="" class="widget-instagram__img" />
+								<span class="widget-instagram__item-meta">
+									<span class="widget-instagram__item-meta-likes"><i class="ion-heart"></i> 246</span>
+									<span class="widget-instagram__item-meta-comments"><i class="ion-chatbubble"></i> 22</span>
+								</span>
+							</span>
+						</a>
+					</li>
+					<li class="widget-instagram__item" data-aos="zoom-in" data-aos-duration="600">
+						<a href="#" class="widget-instagram__link-wrapper" target="_blank">
+							<span class="widget-instagram__plus-sign">
+								<img src="assets/img/samples/insta-shot-4.jpg" alt="" class="widget-instagram__img" />
+								<span class="widget-instagram__item-meta">
+									<span class="widget-instagram__item-meta-likes"><i class="ion-heart"></i> 246</span>
+									<span class="widget-instagram__item-meta-comments"><i class="ion-chatbubble"></i> 22</span>
+								</span>
+							</span>
+						</a>
+					</li>
+					<li class="widget-instagram__item" data-aos="zoom-in" data-aos-duration="600">
+						<a href="#" class="widget-instagram__link-wrapper" target="_blank">
+							<span class="widget-instagram__plus-sign">
+								<img src="assets/img/samples/insta-shot-5.jpg" alt="" class="widget-instagram__img" />
+								<span class="widget-instagram__item-meta">
+									<span class="widget-instagram__item-meta-likes"><i class="ion-heart"></i> 246</span>
+									<span class="widget-instagram__item-meta-comments"><i class="ion-chatbubble"></i> 22</span>
+								</span>
+							</span>
+						</a>
+					</li>
+					<li class="widget-instagram__item" data-aos="zoom-in" data-aos-duration="600">
+						<a href="#" class="widget-instagram__link-wrapper" target="_blank">
+							<span class="widget-instagram__plus-sign">
+								<img src="assets/img/samples/insta-shot-6.jpg" alt="" class="widget-instagram__img" />
+								<span class="widget-instagram__item-meta">
+									<span class="widget-instagram__item-meta-likes"><i class="ion-heart"></i> 246</span>
+									<span class="widget-instagram__item-meta-comments"><i class="ion-chatbubble"></i> 22</span>
+								</span>
+							</span>
+						</a>
+					</li>
+					<li class="widget-instagram__item" data-aos="zoom-in" data-aos-duration="600">
+						<a href="#" class="widget-instagram__link-wrapper" target="_blank">
+							<span class="widget-instagram__plus-sign">
+								<img src="assets/img/samples/insta-shot-7.jpg" alt="" class="widget-instagram__img" />
+								<span class="widget-instagram__item-meta">
+									<span class="widget-instagram__item-meta-likes"><i class="ion-heart"></i> 246</span>
+									<span class="widget-instagram__item-meta-comments"><i class="ion-chatbubble"></i> 22</span>
+								</span>
+							</span>
+						</a>
+					</li>
+					<li class="widget-instagram__item" data-aos="zoom-in" data-aos-duration="600">
+						<a href="#" class="widget-instagram__link-wrapper" target="_blank">
+							<span class="widget-instagram__plus-sign">
+								<img src="assets/img/samples/insta-shot-8.jpg" alt="" class="widget-instagram__img" />
+								<span class="widget-instagram__item-meta">
+									<span class="widget-instagram__item-meta-likes"><i class="ion-heart"></i> 246</span>
+									<span class="widget-instagram__item-meta-comments"><i class="ion-chatbubble"></i> 22</span>
+								</span>
+							</span>
+						</a>
+					</li>
+				</ul>
+				<!-- Instagram Feed / End -->
+				<div class="text-center widget-instagram__btn" data-aos="fade" data-aos-duration="600">
+					<a href="#" class="btn btn-outline-secondary btn-lg">Follow Our Feed</a>
+				</div>
+			</div>
+		</div>
+		<!-- Section: Instagram / End -->
+		
+		<!-- Section: Get in Touch -->
+		<div class="section-content section-content--no-padding section-content--secondary">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-6 col--no-padding">
+						<!-- Google Map -->
+						
+						<div class="gm-map gm-map--lg" data-map-style="shades-of-grey" data-map-address="Central Park, New York, US" data-map-icon="assets/img/gmap-logo.png" data-map-zoom="15">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1818.9762390724065!2d-84.12074703805398!3d9.999850455276142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fac54339f7c9%3A0x926997039e6ceed1!2sEnigmata!5e0!3m2!1ses-419!2scr!4v1702362061694!5m2!1ses-419!2scr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+						</div>
+						<!-- Google Map / End -->
+					</div>
+					<div class="col-md-6">
+						<div class="section-content__inner">
+							<div class="section-heading section-heading--divider-top section-heading--left">
+								<h2 class="section-heading__title" data-aos="fade" data-aos-duration="600">Contáctenos</h2>
+							</div>
+							<!-- Contact Form -->
+							<form action="#" id="contact-form">
+								<div class="form-group form-group--lg">
+									<input type="text" class="form-control" id="contact-name" placeholder="Su nombre...">
+								</div>
+								<div class="form-group form-group--lg">
+									<input type="email" class="form-control" id="contact-email" placeholder="Su correo electrónico...">
+								</div>
+			
+								<div class="form-group form-group--lg">
+									<textarea id="contact-message" class="form-control" rows="4" placeholder="Su mensaje..."></textarea>
+								</div>
+			
+								<input type="button" class="btn btn-outline-secondary btn-lg" value="Enviar Mensaje">
+							</form>
+							<!-- Contact Form / End -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Section: Get in Touch / End -->
+		<!-- Section: CTA -->
+		<div class="section-content section-content--tertiary">
+			<div class="container">
+				<div class="section-heading section-heading--mb-sm section-heading--divider-top">
+					<h2 class="section-heading__title" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">¿Listos para intentarlo?</h2>
+					<div class="section-heading__subtitle section-heading__subtitle--default" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
+						Enigmata Escape Room es toda una experiencia interactiva de la vida real
+					</div>
+				</div>
+		
+				<div class="text-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
+					<a href="/elcuarto.html" class="btn btn-primary btn-lg">Reserve su espacio</a>
+				</div>
+			</div>
+		</div>
+		<!-- Section: CTA / End -->
+		</main>
+
+		<!-- Footer
+		================================================== -->
+		<footer id="footer" class="footer">
+		
+			<!-- Footer Widget -->
+			<div class="footer-widgets">
+				<div class="container">
+					<div class="row footer-widgets__row footer-widgets__row--is-numbered">
+						<div class="col-xs-12 col-sm-6 col-lg-3">
+							<!-- Widget: Address -->
+							<div class="widget widget--footer">
+								<div class="widget__header">
+									<h4 class="widget__title">¿Dónde nos ubicamos?</h4>
+								</div>
+								<div class="widget__content">
+									<address>
+										<p>
+											<a href="https://maps.app.goo.gl/6zoSLeBR9rmPpAJh8" target="_blank">Ver en Google Maps</a><br>
+											75 mts Norte de Asembis<br/>
+											Calle 8, Avenida 1<br>
+											Heredia Centro
+										</p>
+		
+										<p>
+											Email: <a href="mailto:gerencia@enigmata.co.cr">gerencia@enigmata.co.cr</a><br>
+											Tel: +506 88420134
+										</p>
+									</address>
+								</div>
+							</div>
+							<!-- Widget: Address / End -->
+						</div>
+						<div class="col-xs-12 col-sm-6 col-lg-3">
+							<!-- Widget: Schedule -->
+							<div class="widget widget--footer widget-schedule">
+								<div class="widget__header">
+									<h4 class="widget__title">Horario</h4>
+								</div>
+								<div class="widget__content">
+									<ul class="schedule schedule-list">
+										<li class="schedule__item">
+											<span class="schedule__title">Miércoles a Domingo</span>
+											<span class="schedule__time">
+												2:00 pm<br/>
+												3:30 pm<br/>
+												5:00 pm<br/>
+												6:30 pm<br/>
+												8:00 pm<br/>
+											</span>
+										</li>
+										<li class="schedule__item">
+											<span class="schedule__title">Lunes y Martes:</span>
+											<span class="schedule__time">Cerrado</span>
+										</li>
+									</ul>
+									<br/>
+									Para horarios especiales coordinar por privado
+								</div>
+							</div>
+							<!-- Widget: Schedule / End -->
+						</div>
+						<div class="col-xs-12 col-sm-6 col-lg-3">
+							<!-- Widget: Social Links -->
+							<div class="widget widget--footer widget-social">
+								<div class="widget__header">
+									<h4 class="widget__title">Redes sociales</h4>
+								</div>
+								<div class="widget__content">
+									<ul class="social-links social-links--circle">
+										<li class="social-links__item">
+											<a class="social-links__link" target="_blank" href="https://www.facebook.com/enigmatacr/"><i class="fab fa-facebook-f"></i></a>
+										</li>
+										<li class="social-links__item">
+											<a class="social-links__link" target="_blank" href="https://www.instagram.com/enigmatacr/"><i class="fab fa-instagram"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- Widget: Social Links / End -->
+						</div>
+						<div class="col-xs-12 col-sm-6 col-lg-3">
+							<!-- Widget: Social Links -->
+							<div class="widget widget--footer widget-social">
+								<div class="widget__header">
+									<h4 class="widget__title">Arcana Cafetería</h4>
+								</div>
+								<div class="widget__content">
+									<p>Una cafetería temática de fantasía con más de 200 juegos de mesa, ubicada junto con el Escape Room</p>
+									<ul class="social-links social-links--circle">
+										<li class="social-links__item">
+											<a class="social-links__link" target="_blank" href="https://www.facebook.com/arcanacafeteria"><i class="fab fa-facebook-f"></i></a>
+										</li>
+										<li class="social-links__item">
+											<a class="social-links__link" target="_blank" href="https://www.instagram.com/arcanacafeteria/"><i class="fab fa-instagram"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- Widget: Social Links / End -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Footer Widgets / End -->
+		
+			<!-- Footer Copyright -->
+			<div class="footer-copyright">
+				<div class="container">
+		
+					<!-- Logo - Image Based -->
+					<div class="footer__logo footer__logo--img">
+						<a href="index.html"><img src="assets/img/footer-logo.png" srcset="assets/img/footer-logo@2x.png 2x" alt="Escapium Logo"></a>
+					</div>
+					<!-- Logo - Image Based / End -->
+		
+					<div class="footer-copyright__txt">
+						Copyright &copy; 2023 Enigmata Escape Room &nbsp;|&nbsp; All Rights Reserved
+					</div>
+				</div>
+			</div>
+			<!-- Footer Copyright / End -->
+		</footer>
+		<!-- Footer / End -->
+		
+		<!-- Search Form -->
+		<i class="js-search-form-close search-form-close icon-close"></i>
+		<form action="#" class="search-form-overlay">
+			<div class="search-input">
+				<input type="text" name="input-search" class="input-search" placeholder="Enter your search...">
+				<button type="submit" class="submit">
+					<i class="icon-arrow-right"></i>
+				</button>
+			</div>
+		</form>
+		<!-- Search Form / End -->
+
+	</div><!-- .site-wrapper -->
+
+	<!-- Javascript Files
+	================================================== -->
+	<!-- Vendors JS -->
+	<script src="assets/vendor/jquery/jquery-3.7.1.min.js"></script>
+	<script src="assets/vendor/jquery/jquery-migrate.min.js"></script>
+	<script src="assets/vendor/fullcalendar-6.1.10/dist/index.global.min.js"></script>
+	<script src="assets/js/angular.min.js"></script>
+	<script src="assets/js/custom.js"></script>
+	<script>
+	  (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+	    key: "AIzaSyDU98eOSZsv7uYtRzA1GRJA8PfaFu2lmiY",
+	    // Add other bootstrap parameters as needed, using camel case.
+	    // Use the 'v' parameter to indicate the version to load (alpha, beta, weekly, etc.)
+	  });
+	</script>
+	
+	<script src="assets/vendor/moment/moment-with-locales.min.js"></script>
+	<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script defer src="assets/font-icon/font-awesome/js/all.min.js"></script>
+	<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyDU98eOSZsv7uYtRzA1GRJA8PfaFu2lmiY"></script>
+	<script src="assets/vendor/gmap3/dist/gmap3.min.js"></script>
+	
+	<!-- Core JS -->
+	<script src="assets/js/core.js"></script>
+	
+	<!-- Template JS -->
+	<script src="assets/js/init.js"></script>
+	<script src="assets/js/custom.js"></script>
+
+</body>
+</html>

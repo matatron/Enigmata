@@ -1,0 +1,50 @@
+<!-- Header
+================================================== -->
+<header id="header" class="header">
+
+	<!-- Logo - Image Based -->
+	<div class="header__logo header__logo--img">
+		<a href="index.html"><img src="{{../root}}assets/img/logo.png" srcset="{{../root}}assets/img/logo@2x.png 2x" alt="{{global.site-name}}"></a>
+	</div>
+	<!-- Logo - Image Based / End -->
+
+	<!-- Main Navigation -->
+	<nav class="main-nav">
+		<ul class="main-nav__list">
+			<li class="{{#ifpage 'index'}}active{{/ifpage}}"><a href="index.html">Inicio</a></li>
+			<li class="{{#ifpage 'preguntas'}}active{{/ifpage}}"><a href="preguntas.html">Preguntas Frecuentes</a></li>
+			<li class="{{#ifpage 'paquetes'}}active{{/ifpage}}"><a href="paquetes.html">Paquetes Especiales</a></li>
+			<li class="{{#ifpage 'elcuarto'}}active{{/ifpage}}"><a href="elcuarto.html">El cuarto</a></li>
+			<li class="{{#ifpage 'contacto'}}active{{/ifpage}}"><a href="contacto.html">Contacto</a></li>
+		</ul>
+
+	</nav>
+	<!-- Main Navigation / End -->
+
+	<div class="header__spacer"></div>
+
+	<!-- Secondary Navigation -->
+	<nav class="header__nav header__nav--secondary">
+
+		<!-- CTA Button -->
+		<a href="elcuarto.html" class="btn btn-outline-secondary nav-btn">
+			<span class="nav-btn__label">¡Reserva ya!</span>
+			<i class="nav-btn__icon icon-calendar"></i>
+		</a>
+		<!-- CTA Button / End -->
+
+		<!-- Secondary Nav / End -->
+
+	</nav>
+	<!-- Secondary Navigation / End -->
+
+	<!-- Mobile Burger Menu Icon -->
+	<a id="header-mobile__toggle" class="burger-menu-icon">
+		<span class="burger-menu-icon__line"></span>
+		<span class="burger-menu-icon__line"></span>
+		<span class="burger-menu-icon__line"></span>
+	</a>
+	<!-- Mobile Burger Menu Icon / End -->
+
+</header>
+<!-- Header / End -->
