@@ -14,13 +14,6 @@
             <h5 class="card-title"></h5>
 
             <table class="table">
-                <tr>
-                    <td></td>
-                    <?php foreach ($slots as $slot) { ?>
-                        <th><?= $slot; ?></th>
-                    <?php } ?>
-                    <td>Acciones</td>
-                </tr>
                 <?php
                 $mesNombre = null;
                 $dias = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
@@ -36,31 +29,55 @@
                 );
 
                 foreach ($period as $date) {
+                    $currentSlots = $slots;
                     $code = $date->format("Ymd");
-                    $codes = [];
+                    $activecodes = [];
+                    foreach ($activeslots as $slot) {
+                        $activecodes[] = $code."1".$slot;
+                    }
+                    $allcodes = [];
                     foreach ($slots as $slot) {
-                        $codes[] = $code."1".$slot;
+                        $allcodes[] = $code."1".$slot;
                     }
                     if ($Meses[(int) $date->format("n")] != $mesNombre) {
                         $mesNombre = $Meses[(int) $date->format("n")];
                 ?>
                         <tr class="w_Mes">
-                            <th colspan="7"><?= $mesNombre; ?></th>
+                            <th><?= $mesNombre; ?></th>
+                            <?php foreach ($currentSlots as $slot) { ?>
+                                <th><?= $slot; ?></th>
+                            <?php } ?>
+                            <td>Acciones</td>
+
                         </tr>
                     <?php
                     }
                     ?>
                     <tr class="w_<?= $date->format("l"); ?>">
                         <th><?= $dias[(int) $date->format("w")] . " " . $date->format("d"); ?></th>
-                        <?php foreach ($slots as $slot) { ?>
+                        <?php foreach ($currentSlots as $slot) { ?>
                             <td>
                                 <?php
                                 $dayslot = $code . "1" . $slot;
                                 if (isset($reservas[$dayslot])) {
-                                    if ($reservas[$dayslot]["reservedAt"]) { ?>
-                                        <a class="btn btn-secondary btn-block" href="<?php echo base_url(); ?>calendario/verreserva/<?= $reservas[$dayslot]["id"]; ?>">Reservado (<?=$reservas[$dayslot]["people"];?> personas)</a>
+                                    if ($reservas[$dayslot]["reservedAt"]) { 
+                                        if ($reservas[$dayslot]["english"] == "1") {  ?>
+                                        <a class="btn btn-info btn-block" href="<?php echo base_url(); ?>calendario/verreserva/<?= $reservas[$dayslot]["id"]; ?>">🇺🇸 <?=$reservas[$dayslot]["people"];?> P</a>
+                                        <?php } else { ?>
+                                        <a class="btn btn-secondary btn-block" href="<?php echo base_url(); ?>calendario/verreserva/<?= $reservas[$dayslot]["id"]; ?>">🇪🇸 <?=$reservas[$dayslot]["people"];?> P</a>
+                                        <?php } ?>
                                     <?php } else { ?>
+                                        <div class="btn-group">
                                         <a class="btn btn-danger btn-block" href="<?php echo base_url(); ?>calendario/borrarslot/<?= $dayslot; ?>">Borrar <?= $slot; ?></a>
+                                        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="visually-hidden">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a class="dropdown-item" href="<?php echo base_url(); ?>calendario/verreserva/<?= $reservas[$dayslot]["id"]; ?>">Reservar</a>
+                                            </li>
+                                        </ul>
+                                        </div>
                                     <?php
                                     }
                                 } else { ?>
@@ -69,7 +86,10 @@
                                 <?php ?>
                             </td>
                         <?php } ?>
-                        <td><a class="btn btn-info" href="<?php echo base_url(); ?>calendario/abrirdia/<?= implode("-",$codes); ?>">Abrir todo el día</a></td>
+                        <td>
+                            <a class="btn btn-info" href="<?php echo base_url(); ?>calendario/abrirdia/<?= implode("-",$activecodes); ?>">Abrir todo el día</a>
+                            <a class="btn btn-info" href="<?php echo base_url(); ?>calendario/cerrardia/<?= implode("-",$allcodes); ?>">Cerrar todo el día</a>
+                        </td>
                     </tr>
                 <?php
                 }

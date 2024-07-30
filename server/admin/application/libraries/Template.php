@@ -19,7 +19,7 @@ class Template {
     {
                     $this->set($name , $this->CI->load->view($view, $view_data, TRUE));
                     
-                    $this->CI->load->view('layouts/'.$template, $this->template_data);
+                    $this->CI->load->view('layouts/'.$template, $this->template_data, $return);
     }
                                
 }

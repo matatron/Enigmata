@@ -83,12 +83,6 @@
         </a>
       </li><!-- End Dashboard Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo base_url(); ?>calendario/">
-          <i class="bi bi-grid"></i>
-          <span>Reservas</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
 
     </ul>
 
@@ -112,6 +106,7 @@
 
   <!-- Vendor JS Files -->
   <script src="<?php echo base_url(); ?>public/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="<?php echo base_url(); ?>public/vendor/bootstrap/js/popper.min.js"></script>
   <script src="<?php echo base_url(); ?>public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="<?php echo base_url(); ?>public/vendor/chart.js/chart.umd.js"></script>
   <script src="<?php echo base_url(); ?>public/vendor/echarts/echarts.min.js"></script>
